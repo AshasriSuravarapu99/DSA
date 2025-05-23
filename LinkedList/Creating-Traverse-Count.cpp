@@ -18,6 +18,8 @@ public:
 	     next = nullptr;
 	}
 };
+
+// Creation method
 Node* convertArrToList(vector<int> &a)
 {
     Node* head = new Node(a[0]);
@@ -35,14 +37,18 @@ int main()
 	vector<int>a = {5,2,3,4,5};
 	Node* head = convertArrToList(a);
 // 	cout<<head->data;
+
+   // Traversing the Linked List
     Node* temp = head;
     int length = 0;
     while(temp)
     {
         cout<<temp->data<<" ";
+
+	// Counting the no of nodes
         length++;
         temp = temp->next;
     }
     cout<<"\nLength "<<length;
-	return 0;
+    return 0;
 }
