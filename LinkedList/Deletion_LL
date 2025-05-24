@@ -1,0 +1,78 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+public:
+	int data;
+	Node* next;
+public:
+	Node(int data1)
+	{
+	     data = data1;
+	     next = nullptr;
+	}
+};
+
+// Creation method
+Node* convertArrToList(vector<int> &a)
+{
+    Node* head = new Node(a[0]);
+    Node* mover = head;
+    for(int i=1;i<a.size();i++)
+    {
+    	Node* temp = new Node(a[i]);
+    	mover->next = temp;
+    	mover=temp;
+    }
+    return head;
+}
+
+// Traverse the linked list 
+void print(Node* head)
+{
+    Node* temp = head;
+    while(temp) {
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+}
+
+// Remove head
+Node* remhead(Node* head)
+{
+    if(head == nullptr) return head;
+    Node* temp = head;
+    head = head->next;
+    free(temp);
+    return head;
+}
+
+// Remove Last
+Node* remLast(Node* head)
+{
+    if(head==nullptr || head->next == nullptr) return nullptr;
+    Node* temp = head;
+    while(temp->next->next != nullptr)
+    {
+        temp = temp->next;
+    }
+    free(temp->next);
+    temp->next = nullptr;
+    return head;
+}
+
+Node* remKth(Node* head,int k)
+{
+     
+}
+int main()
+{
+	vector<int>a = {1,2,3,4,5};
+	Node* head = convertArrToList(a);
+	head=remhead(head);
+	head = remLast(head);
+	head = remkth(head,2);
+	print(head);
+
+  return 0;
+}
