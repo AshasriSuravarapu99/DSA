@@ -61,9 +61,32 @@ Node* remLast(Node* head)
     return head;
 }
 
-Node* remKth(Node* head,int k)
+//Remove kth 
+Node* remkth(Node* head,int k)
 {
-     
+     if(head == nullptr) return head;
+     if(k==1)
+     {
+         head = head->next;
+         return head;
+     }
+     Node* temp = head;
+     int c =0;
+     Node* prev = nullptr;
+     while(temp)
+     {
+         c++;
+         if(c==k) 
+         {
+             
+             prev->next = temp->next;
+             break;
+         }
+         prev = temp;
+         temp = temp->next;
+        
+     }
+     return head;
 }
 int main()
 {
